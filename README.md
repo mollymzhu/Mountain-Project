@@ -1,2 +1,2 @@
-# MP
-Rock climbing data from mountainproject and visualization
+# Mountain Project
+Web app that track my rock climbing data from mountainproject 
