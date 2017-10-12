@@ -41,7 +41,7 @@ def read_html(link):
     data = []
     for x in output[2:]:
       
-      line = {keys[i]: x[i] for i in range(len(keys))}
+      line = {keys[i]: x[i] for i in range(len(keys))}n
       line['user'] = user
       data.append(line)
 

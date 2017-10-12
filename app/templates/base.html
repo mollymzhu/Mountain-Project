@@ -1,0 +1,90 @@
+{% import "bootstrap/utils.html" as utils %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>C</title>
+
+    <!-- CSS -->
+    <link href={{ url_for('static', filename='css/bootstrap-theme.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/bootstrap.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/buttons.bootstrap.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/dataTables.bootstrap.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/datatables.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/fixedHeader.bootstrap.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/jquery.dataTables.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/jquery.dataTables_themeroller.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/responsive.bootstrap.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/scroller.bootstrap.min.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/bootstrap-editable.css') }} rel='stylesheet'>
+    <link href={{ url_for('static', filename='css/style.css') }} rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <h1>PLEASE VIEW IN CHROME</h1>
+    <![endif]-->
+
+    <!-- JS -->
+    <script src={{ url_for('static', filename='js/jquery-2.2.4.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.dataTables.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/datatables.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/buttons.bootstrap.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/buttons.flash.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/buttons.html5.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/buttons.print.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/dataTables.fixedHeader.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/dataTables.responsive.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/responsive.bootstrap.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/dataTables.scroller.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/dataTables.select.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jszip.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/moment.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/vfs_fonts.js') }}></script>
+    <script src={{ url_for('static', filename='js/pdfmake.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/bootstrap-editable.min.js') }}></script>
+    <script type="text/javascript">var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+  </head>
+
+  <body>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+    	<div class="container-fluid container-nav">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Corporate Banking Portal
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li {% if active_page == 'pdlgd' %} class="active" {% endif %}><a href="{{ url_for('pdlgd') }}">PDLGD View</a></li>
+            <li {% if active_page == 'rs' %} class="active" {% endif %}><a href="{{ url_for('rs') }}">Edit Form</a></li>
+            {% if g.user.is_authenticated %}
+            <li><a href="/admin/user">User Management</a></li>
+            <li role="presentation"><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container-fluid -->
+    </nav>
+
+    <div style="width: 100%;padding-left: 35px;padding-right: 35px;">
+      {{ utils.flashed_messages(container=False, dismissible=True) }}
+      {% block content %}{% endblock %}
+    </div> <!-- /container -->
+  </body>
+</html>

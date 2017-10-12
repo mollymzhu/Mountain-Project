@@ -115,7 +115,7 @@ def print_unlead(region,user):
         writer.writerow(['Region: ',region])
         writer.writerow(['Climber: ',user])
         writer.writerow(['Blank notes default to follow'])
-        writer.writerow(['Routes followed but not lead by climber:'])
+        writer.writerow(['Routes folslowed but not lead by climber:'])
         writer.writerow('\n')
         
         for x in output:
@@ -123,7 +123,7 @@ def print_unlead(region,user):
             
 # DO THE WORK NOW!!!!!!!!!!!!!!!!!
 print_my_unclimbed('new river',min_star=2.5,user='Molly')
-print_unlead('gunks',YZ) 
+#print_unlead('gunks',YZ) 
 
         
 if __name__ == "__main__":
